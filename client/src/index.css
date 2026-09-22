@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+  body { @apply bg-chalk font-sans text-harbor; }
+  h1, h2, h3, h4 { @apply font-display font-extrabold tracking-tight; }
+  :focus-visible { outline: 2px solid #0F766E; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-harbor text-white hover:bg-harbor-700; }
+  .btn-accent { @apply btn bg-marigold text-harbor hover:bg-marigold-dark; }
+  .btn-outline { @apply btn border border-harbor/25 bg-white text-harbor hover:border-harbor; }
+  .btn-danger { @apply btn bg-danger text-white hover:opacity-90; }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+  .input { @apply w-full rounded-lg border border-mist bg-white px-3 py-2.5 text-sm placeholder:text-harbor-300 focus:border-brand focus:outline-none; }
+  .label { @apply mb-1 block text-sm font-semibold; }
+  .panel { @apply rounded-xl border border-mist bg-white p-5; }
+  .badge { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+  .th { @apply px-3 py-2 text-left text-xs font-semibold text-harbor-500; }
+  .td { @apply px-3 py-2.5 text-sm; }
+
+  /* Ticket-stub motif: side notches + perforated divider */
+  .stub {
+    position: relative;
+    -webkit-mask: radial-gradient(circle 9px at 0 var(--notch, 72%), transparent 98%, #000) left / 51% 100% no-repeat,
+                  radial-gradient(circle 9px at 100% var(--notch, 72%), transparent 98%, #000) right / 51% 100% no-repeat;
+            mask: radial-gradient(circle 9px at 0 var(--notch, 72%), transparent 98%, #000) left / 51% 100% no-repeat,
+                  radial-gradient(circle 9px at 100% var(--notch, 72%), transparent 98%, #000) right / 51% 100% no-repeat;
+  }
+  .perforation { border-top: 2px dashed theme('colors.mist'); }
+}

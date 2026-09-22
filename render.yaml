@@ -1,0 +1,24 @@
+# Optional Render Blueprint for the API. Create a MongoDB Atlas cluster first and paste its URI as MONGO_URI.
+services:
+  - type: web
+    name: convene-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: CURRENCY
+        value: usd
