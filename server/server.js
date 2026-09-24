@@ -47,9 +47,11 @@ app.use(errorHandler);
 
 await connectDB();
 
-// Using the temporary in-memory database? Auto-seed demo data on every startup,
-// since each restart creates a brand new empty database.
-if (process.env.MONGO_URI === 'memory') {
+// Auto-seed demo data if the database is empty (first boot) or when using
+// the temporary in-memory database (which resets on every restart).
+const User = (await import('./models/User.js')).default;
+const isEmpty = (await User.countDocuments()) === 0;
+if (process.env.MONGO_URI === 'memory' || isEmpty) {
   const { default: runSeed } = await import('./seed.js');
   await runSeed();
 }
