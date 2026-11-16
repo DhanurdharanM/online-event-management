@@ -49,7 +49,7 @@ export function PaymentCancelled() {
   );
 }
 
-/** Demo gateway used when the server has no Stripe key configured. Nothing here is stored or charged. */
+/** Sandbox checkout used when the server has no live payment key configured. Nothing here is stored or charged. */
 export function MockPayment() {
   const { orderId } = useParams();
   const navigate = useNavigate();
@@ -71,7 +71,7 @@ export function MockPayment() {
   return (
     <div className="mx-auto grid max-w-4xl gap-6 px-4 py-10 md:grid-cols-[1fr_320px]">
       <form onSubmit={pay} className="panel space-y-4">
-        <div className="flex items-start gap-2 rounded-lg bg-marigold-light p-3 text-sm"><FlaskConical className="mt-0.5 h-4 w-4 shrink-0" /> Demo payment page. Nothing is charged or stored. Set <code>STRIPE_SECRET_KEY</code> on the server to switch to real Stripe Checkout.</div>
+        <div className="flex items-start gap-2 rounded-lg bg-marigold-light p-3 text-sm"><FlaskConical className="mt-0.5 h-4 w-4 shrink-0" /> <span><strong>Sandbox payment mode.</strong> This is a safe test environment — no real money is charged and no card details are stored. Use any values below to complete your booking.</span></div>
         <h1 className="text-2xl">Payment</h1>
         <div className="grid gap-2 sm:grid-cols-3" role="radiogroup" aria-label="Payment method">
           {methods.map(([v, l, Icon]) => (
@@ -85,7 +85,7 @@ export function MockPayment() {
             <div className="grid grid-cols-2 gap-3"><Field label="Expiry"><input required className="input" placeholder="MM / YY" autoComplete="cc-exp" /></Field><Field label="CVC"><input required className="input" placeholder="123" autoComplete="cc-csc" /></Field></div>
           </div>
         )}
-        {method === 'digital_wallet' && <p className="rounded-lg border border-mist p-4 text-sm text-harbor-700">Apple Pay, Google Pay and Link are offered automatically on the real Stripe page. In demo mode, continue to simulate a wallet payment.</p>}
+        {method === 'digital_wallet' && <p className="rounded-lg border border-mist p-4 text-sm text-harbor-700">In this sandbox environment, continue to simulate a digital wallet payment.</p>}
         {method === 'upi' && <Field label="UPI ID"><input required className="input" placeholder="name@bank" /></Field>}
         <button className="btn-accent w-full py-3" disabled={busy}>{busy ? 'Processing...' : `Pay ${money(order.totalAmount)}`}</button>
       </form>
