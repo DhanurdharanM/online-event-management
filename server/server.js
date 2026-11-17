@@ -50,7 +50,9 @@ await connectDB();
 // Auto-seed demo data if the database is empty (first boot) or when using
 // the temporary in-memory database (which resets on every restart).
 const User = (await import('./models/User.js')).default;
-const isEmpty = (await User.countDocuments()) === 0;
+const Event = (await import('./models/Event.js')).default;
+const isEmpty = (await User.countDocuments()) === 0
+  || (await Event.countDocuments({ status: 'approved', startDate: { $gte: new Date() } })) === 0;
 if (process.env.MONGO_URI === 'memory' || isEmpty) {
   const { default: runSeed } = await import('./seed.js');
   await runSeed();
