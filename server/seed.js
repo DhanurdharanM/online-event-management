@@ -26,7 +26,7 @@ export default async function runSeed() {
       description: long('A one-day conference on web platforms, cloud and applied AI with talks from engineers who ship.'),
       images: [img('devsummit1'), img('devsummit2'), img('devsummit3')], videoUrl: 'https://www.youtube.com/watch?v=jNQXAC9IVRw',
       startDate: at(21, 9), endDate: at(21, 18),
-      ticketTypes: [{ name: 'General admission', description: 'All talks + lunch', price: 25, quantity: 200 }, { name: 'VIP', description: 'Front rows, workshop seat, speaker dinner', price: 90, quantity: 40 }],
+      ticketTypes: [{ name: 'General admission', description: 'All talks + lunch', price: 1200, quantity: 200 }, { name: 'VIP', description: 'Front rows, workshop seat, speaker dinner', price: 4500, quantity: 40 }],
       schedule: [
         { title: 'Registration & coffee', startTime: at(21, 9), endTime: at(21, 10), room: 'Lobby' },
         { title: 'Keynote: The next decade of the web', speaker: 'Ananya Rao', speakerRole: 'Principal Engineer', startTime: at(21, 10), endTime: at(21, 11), room: 'Main hall' },
@@ -38,7 +38,7 @@ export default async function runSeed() {
       title: 'Sunset Jazz on the Terrace', category: 'Music', city: 'Bengaluru', venue: 'Skyline Terrace', address: 'Indiranagar, Bengaluru',
       description: long('An evening of live jazz quartets, small plates and golden-hour views.'),
       images: [img('jazz1'), img('jazz2')], startDate: at(10, 18), endDate: at(10, 22),
-      ticketTypes: [{ name: 'Standing', price: 12, quantity: 120 }, { name: 'Table for two', price: 60, quantity: 20 }],
+      ticketTypes: [{ name: 'Standing', price: 600, quantity: 120 }, { name: 'Table for two', price: 3000, quantity: 20 }],
       schedule: [{ title: 'Doors open', startTime: at(10, 18), endTime: at(10, 19) }, { title: 'The Marina Quartet', speaker: 'Marina Devi', startTime: at(10, 19), endTime: at(10, 21) }],
     },
     {
@@ -47,15 +47,15 @@ export default async function runSeed() {
     },
     {
       title: 'Sunrise Yoga & Wellness Retreat', category: 'Health & Wellness', city: 'Pondicherry', venue: 'Seaside Retreat', description: long('A weekend reset with guided yoga, breathwork and healthy food by the sea.'),
-      images: [img('yoga1'), img('yoga2')], startDate: at(35, 6), endDate: at(36, 17), ticketTypes: [{ name: 'Shared room', price: 120, quantity: 24 }, { name: 'Private room', price: 210, quantity: 8 }],
+      images: [img('yoga1'), img('yoga2')], startDate: at(35, 6), endDate: at(36, 17), ticketTypes: [{ name: 'Shared room', price: 6000, quantity: 24 }, { name: 'Private room', price: 10500, quantity: 8 }],
     },
     {
       title: 'Street Food Festival', category: 'Food & Drink', city: 'Chennai', venue: 'Marina Grounds', description: long('Sixty vendors, one long evening. Bring friends and an appetite.'),
-      images: [img('food1'), img('food2')], startDate: at(14, 16), endDate: at(14, 23), ticketTypes: [{ name: 'Entry', price: 5, quantity: 500 }, { name: 'Tasting pass (10 tokens)', price: 18, quantity: 150 }],
+      images: [img('food1'), img('food2')], startDate: at(14, 16), endDate: at(14, 23), ticketTypes: [{ name: 'Entry', price: 250, quantity: 500 }, { name: 'Tasting pass (10 tokens)', price: 900, quantity: 150 }],
     },
     {
       title: 'Watercolour Workshop for Beginners', category: 'Arts & Culture', city: 'Chennai', venue: 'Studio 9', description: long('Learn washes, gradients and layering in a relaxed three-hour class. Materials provided.'),
-      images: [img('art1')], startDate: at(8, 15), endDate: at(8, 18), ticketTypes: [{ name: 'Workshop seat', price: 30, quantity: 16 }],
+      images: [img('art1')], startDate: at(8, 15), endDate: at(8, 18), ticketTypes: [{ name: 'Workshop seat', price: 1500, quantity: 16 }],
     },
   ];
   await Event.create(events.map((e) => ({ ...e, organizer: organizer._id, status: 'approved' })));

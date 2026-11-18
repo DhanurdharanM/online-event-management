@@ -1,4 +1,4 @@
-const CURRENCY = import.meta.env.VITE_CURRENCY || 'USD';
+const CURRENCY = import.meta.env.VITE_CURRENCY || 'INR';
 
 export const CATEGORIES = [
   'Music', 'Technology', 'Business', 'Arts & Culture', 'Food & Drink',
